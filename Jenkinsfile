@@ -14,14 +14,14 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Dependencies and test') {
+            agent {
+                docker {
+                    image 'python:3.11'
+                }
+            }
             steps {
                 sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
                 sh 'pytest'
             }
         }
