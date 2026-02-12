@@ -6,9 +6,8 @@ pipeline {
         CONTAINER_NAME = "python-demo-container"
     }
 
-    stages {
 
-        stage('Clone') {
+        stage('Checkout') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kakashi734/python-application']])
             }
@@ -42,7 +41,6 @@ pipeline {
                 '''
             }
         }
-    }
 
     post {
         success {
