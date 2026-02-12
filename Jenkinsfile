@@ -18,11 +18,12 @@ pipeline {
             agent {
                 docker {
                     image 'python:3.11'
+                    args '-u root'
                 }
             }
             steps {
-                sh 'pip install --user -r requirements.txt'
-                sh 'pytest || true'
+                sh 'pip install -r requirements.txt'
+                sh 'pytest'
             }
         }
 
